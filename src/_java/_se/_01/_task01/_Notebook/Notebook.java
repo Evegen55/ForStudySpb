@@ -18,7 +18,7 @@ public class Notebook {
 	 * This method checking notebook for empty
 	 * @return
 	 */
-	private boolean checkNotebookBody() {
+	private boolean isNotebookBodyisNotEmpty() {
 		boolean check = true;
 		if (notebookPage == null) {
 			System.out.println("You should take your notebook in your hand before making a note!");
@@ -35,7 +35,7 @@ public class Notebook {
 	 * @param note
 	 */
 	public void addNote(Note note){
-		if (checkNotebookBody()) {
+		if (isNotebookBodyisNotEmpty()) {
 			for (int i=0; i<notebookPage.length; i++) {
 				if (notebookPage[i] != null) {
 					notebookPage[i] = note;
@@ -50,7 +50,7 @@ public class Notebook {
 	 * @param index
 	 */
 	public void removeNote(int index) {
-		if ((index>0 && index<notebookPage.length) && checkNotebookBody()) {
+		if ((index>0 && index<notebookPage.length) && isNotebookBodyisNotEmpty()) {
 			notebookPage[index] = null;
 		}
 	}
@@ -61,7 +61,7 @@ public class Notebook {
 	 * @param newNote
 	 */
 	public void changeNote(int index, Note newNote) {
-		if ((index>0 && index<notebookPage.length) && checkNotebookBody()) {
+		if ((index>0 && index<notebookPage.length) && isNotebookBodyisNotEmpty()) {
 			notebookPage[index] = newNote;
 		}
 	}
@@ -70,7 +70,7 @@ public class Notebook {
 	 * print all of notes in the notebook
 	 */
 	public void viewAllNotes() {
-		if (checkNotebookBody()) {
+		if (isNotebookBodyisNotEmpty()) {
 			for (Note note : notebookPage) {
 				System.out.println("note " + note.getNoteBody());
 			}
