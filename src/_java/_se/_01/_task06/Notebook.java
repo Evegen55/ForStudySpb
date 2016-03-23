@@ -1,4 +1,4 @@
-package _java._se._01._task01._Notebook;
+package _java._se._01._task06;
 
 public class Notebook {
 

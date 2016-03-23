@@ -1,4 +1,4 @@
-package _java._se._01._task01;
+package _java._se._01._task03;
 
 public class TanCycle {
 	
