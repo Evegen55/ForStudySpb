@@ -14,7 +14,11 @@ public class TestMatrix {
 	 */
 	public static void main(String[] args) {
 		Matrix mtx = new Matrix(6);
+		mtx.fillMatrixOneCrossLine();
 		mtx.printMatrixArray();
+		mtx.fillMatrixDoubleCrossLine();
+		mtx.printMatrixArray();
+		
     }
 
 }
