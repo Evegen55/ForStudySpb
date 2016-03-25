@@ -32,5 +32,7 @@ public class Stationery implements Priced {
 		if (this.price != 0) return true;
 		return false;
 	}
+	
+	
 
 }
