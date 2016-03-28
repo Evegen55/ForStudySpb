@@ -7,6 +7,12 @@ package _java._se._02._task06_07;
  * @author Lartsev
  *
  */
+@MySubmarine(
+		engineNumbers = 1, 
+		engineType = "nuclear", 
+		manufactured = "china", 
+		type = "anti aircraftcarrier"
+		)
 public class Submarine {
 	
 	private double fuelLevel;
