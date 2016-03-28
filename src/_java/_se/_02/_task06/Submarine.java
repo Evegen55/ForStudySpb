@@ -93,6 +93,7 @@ public class Submarine {
 		System.out.println("engine stopped");
 	}
 
+	//===========================================================
 	/**
 	 * 
 	 * @author Lartsev
@@ -124,8 +125,8 @@ public class Submarine {
 		public boolean isStart() {
 			return start;
 		}
-
-
+    //===========================================================
+		
 		/**
 		 * @param start the start to set
 		 */
