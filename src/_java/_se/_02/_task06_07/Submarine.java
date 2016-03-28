@@ -1,7 +1,7 @@
 /**
  * 
  */
-package _java._se._02._task06;
+package _java._se._02._task06_07;
 
 /**
  * @author Lartsev
