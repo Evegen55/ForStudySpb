@@ -94,6 +94,8 @@ public class CrazyLogger {
 	public static void main(String[] args) {
 		CrazyLogger cl = new CrazyLogger();
 		cl.testCase();
+		Locale loc = Locale.getDefault();
+		System.out.println(loc.getDisplayName());
 	}
 
 }
