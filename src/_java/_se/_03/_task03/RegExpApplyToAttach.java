@@ -25,7 +25,7 @@ public class RegExpApplyToAttach {
 	 * @return A List of tokens from the document text that match the regex 
 	 *   pattern
 	 */
-	protected List<String> getTokens(String pattern, String text)
+	public List<String> getTokens(String pattern, String text)
 	{
 		ArrayList<String> tokens = new ArrayList<String>();
 		Pattern tokSplitter = Pattern.compile(pattern);
@@ -41,7 +41,7 @@ public class RegExpApplyToAttach {
 	 * @return
 	 * @throws IOException 
 	 */
-	protected String getStringFromText(String fileName) {
+	public String getStringFromText(String fileName) {
 		StringBuilder sb = new StringBuilder();
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName));) {
 		    String line = br.readLine();
