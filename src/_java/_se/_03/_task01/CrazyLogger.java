@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package _java._se._03._task01;
 
@@ -17,7 +17,7 @@ import _java._se._03._task03.RegExpApplyToAttach;
 public class CrazyLogger {
 	private StringBuilder sb;
 	private RegExpApplyToAttach rg;
-	
+
 	/**
 	 * @param sb
 	 */
@@ -27,25 +27,25 @@ public class CrazyLogger {
 	}
 
 	/**
-	 * 
-	 * @param text
+	 * This method creates a single logger's string
+	 * @param text that will be logged in the single string
 	 * @return
 	 */
 	protected String createLogString(String text) {
-		
+
 		Date today = new Date();
 		SimpleDateFormat formatter1 = new SimpleDateFormat("dd.MM.yyyy");
 		String result1 = formatter1.format(today);
-		
+
 		SimpleDateFormat formatter2 = new SimpleDateFormat("hh.mm");
 		String result2 = formatter2.format(today);
 		String logstr = result1 + ":" + result2 + "-" + text;
-		
+
 		return logstr;
 	}
-	
+
 	/**
-	 * 
+	 * This method creates a single logged string and attach it to a buffer
 	 * @param event
 	 */
 	public void logging(String event){
@@ -53,27 +53,27 @@ public class CrazyLogger {
 		sb.append(logStr);
 		sb.append(System.lineSeparator());
 	}
-	
-	
+
+
 
 	/**
-	 * @return the text formatted as log
+	 * @return the text from buffer formatted as log
 	 */
 	public String getLoggedString() {
 		return sb.toString();
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param pattern
 	 * @return
 	 */
 	public List<String> findByPattern(String pattern) {
 		return rg.getTokens(pattern, getLoggedString());
 	}
-	
+
 	/**
-	 * 
+	 * test case
 	 */
 	public void testCase(){
 		//create a new logger
@@ -86,7 +86,7 @@ public class CrazyLogger {
 		}
 		System.out.println(getLoggedString());
 	}
-	
+
 
 	/**
 	 * @param args
