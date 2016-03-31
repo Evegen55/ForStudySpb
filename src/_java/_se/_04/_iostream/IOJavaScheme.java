@@ -19,6 +19,7 @@ public class IOJavaScheme {
 	 */
 	public static void main(String[] args) {
 		//try with resources because FileWriter implements Closable
+		//@see https://habrahabr.ru/post/178405/
 		try (FileWriter out = new FileWriter("other/text.txt")) {
 			BufferedWriter br = new BufferedWriter(out);
 			PrintWriter pw = new PrintWriter(br);
