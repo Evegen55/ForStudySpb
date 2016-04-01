@@ -1,5 +1,5 @@
 /**
- *
+ * 
  */
 package _java._se._04._task04;
 
@@ -12,13 +12,17 @@ import java.util.Collection;
  */
 public class Film  implements Serializable {
 	private Collection<Actor> actors;
+	private String name;
 
 	/**
 	 * @param actors
 	 */
-	public Film(Collection<Actor> actors) {
+	public Film(Collection<Actor> actors, String name) {
 		this.actors = actors;
+		this.name = name;
 	}
+	
+	
 
 	/**
 	 * @return the actors
@@ -27,14 +31,17 @@ public class Film  implements Serializable {
 		return actors;
 	}
 
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Film [actors=" + actors + "]";
+		return "Film [actors=" + actors + ", name=" + name + "]" + "\n";
 	}
 
-
+	
+	
 
 }
