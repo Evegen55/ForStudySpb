@@ -21,43 +21,6 @@ public class JavaReaderAsByteStream {
 
 	/**
 	 * 
-	 *@return true if file is not yet exist or 
-	 * already exist and empty. 
-	 * If file is not yet exist - then creates file.
-	 * 
-	 */
-	public boolean checkFile(String fileName){
-		boolean ret = false;
-		File f = new File(fileName);
-		if (!f.isFile()) {
-			try {
-				f.createNewFile();
-				ret = true;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			try(BufferedReader br = new BufferedReader(new FileReader(f));) {
-				if (br.readLine() == null) {
-					System.out.println("No errors, and file empty");
-				    ret = true;
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			 
-		}
-		System.out.println("No errors, file exist and is not empty");
-		return ret;
-    }
-	
-	/**
-	 * 
 	 */
 	public void readFromFile() {
 		String fileName = "other/ForJavaReader.txt";
