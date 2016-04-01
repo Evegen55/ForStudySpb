@@ -5,9 +5,13 @@ package _java._se._04._task04;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -18,16 +22,33 @@ import java.util.LinkedList;
 public class WorkWithCollectionsOfFilms {
 	
 	private String fileName;
-	private Collection<Actor> actors;
 	private Collection<Film> films;
+	private Collection<Film> filmsFromFile;
 	
+	
+	/**
+	 * 
+	 */
+	public WorkWithCollectionsOfFilms() {
+		fileName = "other/serializedObjects";
+		if(checkFile()) {
+			films = new LinkedList<>();
+		    filmsFromFile = new LinkedList<>();
+		} else {
+			films = readCollectionFromAFile();
+			filmsFromFile = new LinkedList<>();
+		}
+		
+		
+	}
+
 	/**
 	 * @param fileName
 	 */
 	public WorkWithCollectionsOfFilms(String fileName) {
 		this.fileName = fileName;
-		actors = new LinkedList<>();
 		films = new LinkedList<>();
+	    filmsFromFile = new LinkedList<>();
 	}
 
 	/**
@@ -63,6 +84,7 @@ public class WorkWithCollectionsOfFilms {
 			}
 			 
 		}
+		System.out.println("No errors, file exist and is not empty");
 		return ret;
     }
 	
@@ -71,6 +93,7 @@ public class WorkWithCollectionsOfFilms {
 	 * @param numfilms
 	 */
 	public void createCollectionsOfFilms(int numfilms){
+		Collection<Actor> actors = new LinkedList<>();
 		//set that number of actors is more than number of films
 		int numactors = numfilms + 2;
 		//create collections of films
@@ -88,15 +111,68 @@ public class WorkWithCollectionsOfFilms {
 		}
 	}
 	
-	
-
 	/**
-	 * @return the actors
+	 * This method checks that file is already exist and empty.
+	 * Then serialized collection of films
 	 */
-	public Collection<Actor> getActors() {
-		return actors;
+	public void saveCollectionToAFile(){
+		if(checkFile()) {
+			try(FileOutputStream outFile= new FileOutputStream(fileName);
+					ObjectOutputStream oos = new ObjectOutputStream(outFile);
+					){
+				oos.writeObject(films);
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * This method checks that file is already exist and empty.
+	 * Then serialized collection of films
+	 */
+	public void saveCollectionToAFile(Collection<Film> cf){
+		
+			try(FileOutputStream outFile= new FileOutputStream(fileName);
+					ObjectOutputStream oos = new ObjectOutputStream(outFile);
+					){
+				oos.writeObject(cf);
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 	}
 
+	/**
+	 * read collections from a file. Use it as getter method instead getFilmsFromFile()
+	 */
+	public Collection<Film> readCollectionFromAFile(){
+		try(FileInputStream inFile = new FileInputStream(fileName);
+				ObjectInputStream ois = new ObjectInputStream(inFile)) {
+			filmsFromFile = (Collection<Film>) ois.readObject();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return filmsFromFile;
+	}
+	
 	/**
 	 * @return the films
 	 */
@@ -108,11 +184,28 @@ public class WorkWithCollectionsOfFilms {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		//general test
 		String fileName = "other/serializedObjects";
 		WorkWithCollectionsOfFilms wc = new WorkWithCollectionsOfFilms(fileName);
 		System.out.println(wc.checkFile());
 		wc.createCollectionsOfFilms(5);
 		System.out.println(wc.getFilms());
+		wc.saveCollectionToAFile();
+		System.out.println("==========================");
+		System.out.println(wc.readCollectionFromAFile());
+		
+		//test:
+		//when app start -> then read a file
+		//modify collections of films
+		//save it to a file
+		WorkWithCollectionsOfFilms wcNew = new WorkWithCollectionsOfFilms();
+		System.out.println("==========================");
+		Collection<Film> cf= wcNew.getFilms();
+		System.out.println(cf);
+		cf.add(new Film(new LinkedList<Actor>(), "LAST ADDED FILM"));
+		wcNew.saveCollectionToAFile(cf);
+		System.out.println(wcNew.readCollectionFromAFile());
+		
 
 	}
 
