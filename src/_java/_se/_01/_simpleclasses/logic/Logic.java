@@ -1,4 +1,4 @@
-package javase01.t01.logic;
+package _java._se._01._simpleclasses.logic;
 
 public class Logic {
 	public String method() {

@@ -1,6 +1,6 @@
-package javase01.t01.main;
+package _java._se._01._simpleclasses.main;
 
-import javase01.t01.logic.Logic;
+import _java._se._01._simpleclasses.logic.Logic;
 
 public class Main {
 
