@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package _java._se._04._iostream;
 
@@ -28,16 +28,16 @@ public class SerializationExample {
 			//serialize objects
 			Object objSave = new Integer(1);
 			oos.writeObject(objSave);
-			
+
 			//see what was saved
 			byte[] arr = os.toByteArray();
 			for (byte b : arr) {
 				System.out.println((char) b);
 			}
-			
+
 			//save to file
 			outFile.write(arr);
-			
+
 			//deserialize
 			try (ByteArrayInputStream is = new ByteArrayInputStream(arr);
 					ObjectInputStream ois = new ObjectInputStream(is)
@@ -45,16 +45,12 @@ public class SerializationExample {
 				Object objRead = ois.readObject();
 				//check objects for equality
 			System.out.println("check objects for equality" + "\t" + objSave.equals(objRead));
-				
+
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-			
-			
-			
-			
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

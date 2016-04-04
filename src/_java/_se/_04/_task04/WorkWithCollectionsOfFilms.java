@@ -20,14 +20,14 @@ import java.util.LinkedList;
  *
  */
 public class WorkWithCollectionsOfFilms {
-	
+
 	private String fileName;
 	private Collection<Film> films;
 	private Collection<Film> filmsFromFile;
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 */
 	public WorkWithCollectionsOfFilms() {
 		fileName = "other/serializedObjects";
@@ -38,8 +38,8 @@ public class WorkWithCollectionsOfFilms {
 			films = readCollectionFromAFile();
 			filmsFromFile = new LinkedList<>();
 		}
-		
-		
+
+
 	}
 
 	/**
@@ -52,11 +52,11 @@ public class WorkWithCollectionsOfFilms {
 	}
 
 	/**
-	 * 
-	 *@return true if file is not yet exist or 
-	 * already exist and empty. 
+	 *
+	 *@return true if file is not yet exist or
+	 * already exist and empty.
 	 * If file is not yet exist - then creates file.
-	 * 
+	 *
 	 */
 	public boolean checkFile(){
 		boolean ret = false;
@@ -82,14 +82,14 @@ public class WorkWithCollectionsOfFilms {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			 
+
 		}
 		System.out.println("No errors, file exist and is not empty");
 		return ret;
     }
-	
+
 	/**
-	 * 
+	 *
 	 * @param numfilms
 	 */
 	public void createCollectionsOfFilms(int numfilms){
@@ -104,13 +104,13 @@ public class WorkWithCollectionsOfFilms {
 				if (!actors.contains(actor)) {
 					actors.add(actor);
 				}
-				
+
 			}
 			Film film = new Film(actors, "film" + i);
 			films.add(film);
 		}
 	}
-	
+
 	/**
 	 * This method checks that file is already exist and empty.
 	 * Then serialized collection of films
@@ -121,7 +121,7 @@ public class WorkWithCollectionsOfFilms {
 					ObjectOutputStream oos = new ObjectOutputStream(outFile);
 					){
 				oos.writeObject(films);
-				
+
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -131,26 +131,22 @@ public class WorkWithCollectionsOfFilms {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method checks that file is already exist and empty.
 	 * Then serialized collection of films
 	 */
 	public void saveCollectionToAFile(Collection<Film> cf){
-		
+
 			try(FileOutputStream outFile= new FileOutputStream(fileName);
 					ObjectOutputStream oos = new ObjectOutputStream(outFile);
 					){
 				oos.writeObject(cf);
-				
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
+
 	}
 
 	/**
@@ -160,19 +156,12 @@ public class WorkWithCollectionsOfFilms {
 		try(FileInputStream inFile = new FileInputStream(fileName);
 				ObjectInputStream ois = new ObjectInputStream(inFile)) {
 			filmsFromFile = (Collection<Film>) ois.readObject();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return filmsFromFile;
 	}
-	
+
 	/**
 	 * @return the films
 	 */
@@ -193,7 +182,7 @@ public class WorkWithCollectionsOfFilms {
 		wc.saveCollectionToAFile();
 		System.out.println("==========================");
 		System.out.println(wc.readCollectionFromAFile());
-		
+
 		//test:
 		//when app start -> then read a file
 		//modify collections of films
@@ -205,7 +194,7 @@ public class WorkWithCollectionsOfFilms {
 		cf.add(new Film(new LinkedList<Actor>(), "LAST ADDED FILM"));
 		wcNew.saveCollectionToAFile(cf);
 		System.out.println(wcNew.readCollectionFromAFile());
-		
+
 
 	}
 
