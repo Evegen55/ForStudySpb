@@ -1,0 +1,10 @@
+implements	1
+new	7
+package	1
+static	1
+void	1
+import	1
+public	5
+this	1
+class	2
+return	2
