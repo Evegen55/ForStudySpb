@@ -59,7 +59,7 @@ public class JavaReaderAsByteStream {
 				//only letters
 				if( b < 65 || (b > 90 & b < 97)) {
 					sb.deleteCharAt(sb.length()-1);
-					String word = sb.toString().trim();
+					String word = sb.toString();
 					for (String str : arr) {
 						if (word.compareTo(str) == 0) {
 							if(!mp.containsKey(word)) {
