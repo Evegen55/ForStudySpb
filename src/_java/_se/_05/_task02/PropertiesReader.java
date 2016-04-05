@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package _java._se._05._task02;
 
@@ -14,39 +14,44 @@ import java.io.IOException;
  *
  */
 public class PropertiesReader {
-	
+
 	private String fileName;
+	private final String fileExtension = ".properties";
 
 	/**
 	 * @param fileName
 	 */
 	public PropertiesReader(String fileName) {
-		this.fileName = fileName;
+		this.fileName = fileName + fileExtension;
 	}
-	
+
 	/**
-	 * 
-	 * @param fileName
 	 * @return true if file already exist (created) and empty.
 	 * If file is not yet exist - then creates file.
 	 */
-	public boolean checkFile(String fileName){
+	private boolean isFileAlreadyExistAndEmpty(){
 		boolean ret = false;
-		File f = new File(fileName);
-		
+		File f = new File(this.fileName);
+
 		try {
 			if(f.createNewFile()) {
 				System.out.println("No errors, file has been created and empty");
 				ret = true;
 			} else {
-				System.out.println("No errors, file already exist in the filesystem");
+				System.out.println("No errors," +"\n" + "file already exist in the filesystem");
 				//check file for empty
 				try(BufferedReader br = new BufferedReader(new FileReader(f));) {
-					if (br.readLine() == null) {
+					String line = br.readLine();
+					if (line == null) {
 						System.out.println("and is empty");
 					    ret = true;
 					} else {
-						System.out.println("and file is NOT empty");
+						System.out.println("and is NOT empty");
+						if (isKeyInFile(line)) {
+							System.out.println("and key exist in the first line");
+						} else {
+							System.out.println("and key is NOT exist in the first line");
+						}
 					}
 				} catch (FileNotFoundException e) {
 					System.out.println("file has been deleted...");
@@ -60,9 +65,27 @@ public class PropertiesReader {
 			System.out.println("smth went wrong when Java tryed created file...");
 			e.printStackTrace();
 		}
-		
+
 		return ret;
    }
+
+	/**
+	 * 
+	 * @param line 
+	 * @return true if key exist in the *.properties file
+	 */
+	private boolean isKeyInFile(String line) {
+		boolean ret = false;
+		String eq = "=";
+		if (line.contains(eq) && line.indexOf(eq)>0) {
+			char c = line.charAt(0);
+			//only letters
+			if( (c > 64 && c < 91) || (c > 996 & c < 123)) {
+				ret = true;
+			}
+		}
+		return ret;
+	}
 
 	/**
 	 * @param args
@@ -70,6 +93,6 @@ public class PropertiesReader {
 	public static void main(String[] args) {
 		String fileName = "other/for_exceptions/serializedObjects";
 		PropertiesReader pr = new PropertiesReader(fileName);
-		System.out.println(pr.checkFile(fileName));
+		System.out.println(pr.isFileAlreadyExistAndEmpty());
 	}
 }
