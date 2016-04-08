@@ -132,42 +132,4 @@ public class WorkWithTextFile {
 	}
 
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-        /*FileTreeList ftl = new FileTreeList();
-
-		String[] str = ftl.getListUnderRootDisk();
-		ftl.printList(str);
-
-		String[] str1 = ftl.getListUnderRootProject();
-		ftl.printList(str1);
-
-		String[] str2 = ftl.getListUnderPathWithFilter("dghdf", ".*\\.java$");
-		ftl.printList(str2);
-
-		String[] str3 = ftl.getListTextFileUnderPath("other");
-		ftl.printList(str3);
-
-		String[] str4 = ftl.getListUnderPathWithFilter("src/_java/_se/_04/_iostream/", "fgfdh");
-		ftl.printList(str4);
-
-		String[] str5 = ftl.getListUnderPathWithFilter("src/_java/_se/_04/_iostream/", ".*\\.java$");
-		ftl.printList(str5);
-
-		String[] str6 = ftl.getListTextFileUnderPath("othenbvnbr");
-		ftl.printList(str6);*/
-
-		WorkWithTextFile wtf = new WorkWithTextFile();
-		wtf.createTextFile("blablabla\\", "adsfas");
-		wtf.createTextFile("other\\", "adsfas");
-		//wtf.deleteTextFile("other\\", "adsfas");
-		wtf.deleteTextFile("blablabla\\", "adsfas");
-		wtf.changeTextfile("other\\", "adsfas", "content2");
-		wtf.changeTextfile("other\\", "adsfas", "content3");
-		wtf.changeTextfile("blablabla\\", "adsfas", "content3");
-
-	}
-
 }
