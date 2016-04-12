@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author Lartsev
  *
  */
-public class PropertiesReader {
+public class PropertiesReaderWithMap {
 
 	private String fileName;
 	private final String fileExtension = ".properties";
@@ -21,7 +21,7 @@ public class PropertiesReader {
 	/**
 	 * @param fileName
 	 */
-	public PropertiesReader(String fileName) {
+	public PropertiesReaderWithMap(String fileName) {
 		this.fileName = fileName + fileExtension;
 	}
 
@@ -92,7 +92,7 @@ public class PropertiesReader {
 	 */
 	public static void main(String[] args) {
 		String fileName = "other/for_exceptions/serializedObjects";
-		PropertiesReader pr = new PropertiesReader(fileName);
+		PropertiesReaderWithMap pr = new PropertiesReaderWithMap(fileName);
 		System.out.println(pr.isFileAlreadyExistAndEmpty());
 	}
 }
