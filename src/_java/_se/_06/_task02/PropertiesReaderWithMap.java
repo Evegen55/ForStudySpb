@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Lartsev
@@ -21,54 +23,11 @@ public class PropertiesReaderWithMap {
 	/**
 	 * @param fileName
 	 */
-	public PropertiesReaderWithMap(String fileName) {
+	private PropertiesReaderWithMap(String fileName) {
 		this.fileName = fileName + fileExtension;
 	}
 
-	/**
-	 * @return true if file already exist (created) and empty.
-	 * If file is not yet exist - then creates file.
-	 */
-	private boolean isFileAlreadyExistAndEmpty(){
-		boolean ret = false;
-		File f = new File(this.fileName);
-
-		try {
-			if(f.createNewFile()) {
-				System.out.println("No errors, file has been created and empty");
-				ret = true;
-			} else {
-				System.out.println("No errors," +"\n" + "file already exist in the filesystem");
-				//check file for empty
-				try(BufferedReader br = new BufferedReader(new FileReader(f));) {
-					String line = br.readLine();
-					if (line == null) {
-						System.out.println("and is empty");
-					    ret = true;
-					} else {
-						System.out.println("and is NOT empty");
-						if (isKeyInFile(line)) {
-							System.out.println("and key exist in the first line");
-						} else {
-							System.out.println("and key is NOT exist in the first line");
-						}
-					}
-				} catch (FileNotFoundException e) {
-					System.out.println("file has been deleted...");
-					e.printStackTrace();
-				} catch (IOException e) {
-					System.out.println("smth went wrong inside else loop...");
-					e.printStackTrace();
-				}
-			}
-		} catch (IOException e) {
-			System.out.println("smth went wrong when Java tryed created file...");
-			e.printStackTrace();
-		}
-
-		return ret;
-   }
-
+	
 	/**
 	 * 
 	 * @param line 
@@ -87,12 +46,54 @@ public class PropertiesReaderWithMap {
 		return ret;
 	}
 
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public HashMap<String , String> createPropetiesMap(){
+		
+		File f = new File(this.fileName);
+		
+		HashMap<String , String> map = new  HashMap<> ();
+		
+		try(BufferedReader br = new BufferedReader(new FileReader(f));) {
+			
+			while(br.ready()) {
+				String line = br.readLine();
+				if (isKeyInFile(line)) {
+					String[] lines = line.split("=");
+					map.put(lines[0].trim(), lines[1].trim());
+				}
+			}
+			
+			} catch (FileNotFoundException e) {
+				System.out.println("File not found. check out file");
+				e.printStackTrace();
+			} catch (IOException e) {
+				System.out.println("smth went wrong when Java tryed read from buffer...");
+				e.printStackTrace();
+			}
+		return map;
+	}
+	
+	/**
+	 *
+	 * @param parentMap
+	 */
+	public static void printMap(HashMap<String,String> parentMap){
+		for (Map.Entry<String,String> entry : parentMap.entrySet()) {
+			System.out.print( "key" + "\t" + entry.getKey() + "\t");
+			System.out.println( "value" + "\t" + entry.getValue());
+		}
+	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		String fileName = "other/for_properties/QuestionBundle_en_US";
 		PropertiesReaderWithMap pr = new PropertiesReaderWithMap(fileName);
-		System.out.println(pr.isFileAlreadyExistAndEmpty());
+		printMap(pr.createPropetiesMap());
+		
 	}
 }
