@@ -91,7 +91,7 @@ public class PropertiesReaderWithMap {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String fileName = "other/for_exceptions/serializedObjects";
+		String fileName = "other/for_properties/QuestionBundle_en_US";
 		PropertiesReaderWithMap pr = new PropertiesReaderWithMap(fileName);
 		System.out.println(pr.isFileAlreadyExistAndEmpty());
 	}
