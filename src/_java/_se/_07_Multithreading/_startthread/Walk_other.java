@@ -7,7 +7,7 @@ package _java._se._07_Multithreading._startthread;
  * @author Lartsev
  *
  */
-public class Talk extends Thread {
+public class Walk_other implements Runnable {
 
 	/* (non-Javadoc)
 	 * @see java.lang.Runnable#run()
@@ -15,7 +15,7 @@ public class Talk extends Thread {
 	@Override
 	public void run() {
 		for (int i = 0; i < 8; i++) {
-			System.out.println("Talking");
+			System.out.println("\t" + "Walking-----");
 			try {
 				Thread.sleep(400);
 			} catch (InterruptedException e) {
@@ -23,6 +23,7 @@ public class Talk extends Thread {
 				e.printStackTrace();
 			}
 		}
+
 	}
 
 }

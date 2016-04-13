@@ -17,13 +17,13 @@ public class ThreadDemo {
 		Talk talk = new Talk();
 		Thread walk = new Thread(new Walk());
 		//start threads
-		talk.run();
+		talk.start();
 		System.out.println("===================");
-		walk.run();
+		walk.start();
 		
 		//execute method with no create a new thread
 		System.out.println("===================");
-		Walk w = new Walk();
+		Walk_other w = new Walk_other();
 		w.run();
 
 	}
