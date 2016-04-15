@@ -24,7 +24,22 @@ public class OperationInspector {
 		opD.join();
 		opW.join();
 
-		System.out.println("Balance is:" + account.getBalance());
+		System.out.println("Balance UNSYNCHRONIZED is:" + account.getBalance());
+		
+		System.out.println("\n" + "NOTICE: IF YOU TRY TO RUN APP AGAIN YOU WILL SEE THAT RESULT OF HIGHER"
+				+ "\n" + "PROGRAM RETURN OTHER BALANCE AMOUNT INSTEAD BELOW SYNCRONIZED CODE" + "\n");
+		
+		AccountWithSync aws = new AccountWithSync(200);
+		OperatorDepositSync opDs = new OperatorDepositSync(aws);
+		OperatorWithDrawSync opWs = new OperatorWithDrawSync(aws);
+
+		opDs.start();
+		opWs.start();
+
+		opDs.join();
+		opWs.join();
+
+		System.out.println("Balance SYNCHRONIZED is:" + aws.getBalance());
 	}
 
 }
