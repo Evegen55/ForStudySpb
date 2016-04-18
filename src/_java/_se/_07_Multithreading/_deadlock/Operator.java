@@ -19,10 +19,41 @@ public class Operator extends Thread {
 	@Override
 	public void run() {
 		for (int i =0; i <3; i++) {
-			operationDeposit(10);
+			//operationDeposit(10); //for deadlock!!!
+			operationDeposit2(10);
 		}
 	}
 
+	private void operationDeposit2(int i) {
+		int hashacc1 = account1.hashCode();
+		int hashacc2 = account2.hashCode();
+		
+		Account acc1 = null;
+		Account acc2 = null;
+		
+		if (hashacc1 < hashacc2) {
+			acc1 = account1;
+			acc2 = account2;
+		} else {
+			acc1 = account2;
+			acc2 = account1;
+		}
+		synchronized (acc1) {
+			System.out.println("Account# 1 blocking");
+			synchronized (acc2) {
+				System.out.println("Account# 2 blocking");
+				account1.deposit(i);
+				account2.widthdraw(i);
+			}
+		}
+		System.out.println("Accounts" + "\t" + "UNblocking");
+		
+	}
+
+	/**
+	 * for deadlock!!!!
+	 * @param i
+	 */
 	private void operationDeposit(int i) {
 		synchronized (account1) {
 			System.out.println("Account# 1 blocking");
@@ -34,6 +65,8 @@ public class Operator extends Thread {
 		}
 		
 	}
+	
+	
 	
 	
 }
