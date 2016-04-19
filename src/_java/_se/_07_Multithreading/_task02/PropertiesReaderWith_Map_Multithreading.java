@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Lartsev
  *
  */
-public class PropertiesReaderWith_Map_Multithreading {
+public class PropertiesReaderWith_Map_Multithreading implements Runnable {
 
 	private String fileName;
 	private final String fileExtension = ".properties";
@@ -81,19 +81,46 @@ public class PropertiesReaderWith_Map_Multithreading {
 	 *
 	 * @param parentMap
 	 */
-	public static void printMap(HashMap<String,String> parentMap){
+	public void printMap(HashMap<String,String> parentMap){
 		for (Map.Entry<String,String> entry : parentMap.entrySet()) {
-			System.out.print( "key" + "\t" + entry.getKey() + "\t");
-			System.out.println( "value" + "\t" + entry.getValue());
+			System.out.println( "key" + "\t" + entry.getKey() + 
+					"\t" + "value" + "\t" + entry.getValue() 
+					+ 
+					"\n" + "thread" + "\t" + this.toString()
+					);
 		}
 	}
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		String fileName = "other/for_properties/QuestionBundle_en_US";
-		PropertiesReaderWith_Map_Multithreading pr = new PropertiesReaderWith_Map_Multithreading(fileName);
-		printMap(pr.createPropetiesMap());
+
+
+	@Override
+	public void run() {
+		printMap(createPropetiesMap());
 		
 	}
+	
+	/**
+	 * @param args
+	 * @throws InterruptedException 
+	 */
+	public static void main(String[] args) throws InterruptedException {
+		//String fileName = "other/for_properties/QuestionBundle_en_US";
+		//PropertiesReaderWith_Map_Multithreading pr1 = new PropertiesReaderWith_Map_Multithreading(fileName);
+		//PropertiesReaderWith_Map_Multithreading pr2 = new PropertiesReaderWith_Map_Multithreading(fileName);
+		//printMap(pr1.createPropetiesMap());
+		//printMap(pr2.createPropetiesMap());
+		
+		String fileName = "other/for_properties/QuestionBundle_en_US";
+		PropertiesReaderWith_Map_Multithreading pr1 = new PropertiesReaderWith_Map_Multithreading(fileName);
+		PropertiesReaderWith_Map_Multithreading pr2 = new PropertiesReaderWith_Map_Multithreading(fileName);
+		
+		Thread th1 = new Thread(pr1);
+		Thread th2 = new Thread(pr2);
+		
+		th1.start();
+		th2.start();
+		
+		th1.join();
+		th2.join();
+	}
+
 }
