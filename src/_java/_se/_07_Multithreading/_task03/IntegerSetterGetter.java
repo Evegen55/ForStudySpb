@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package _java._se._07_Multithreading._task03;
 
@@ -53,23 +53,28 @@ public class IntegerSetterGetter extends Thread {
 			while (number == null) {
 				System.out.println("Поток " + getName()
 						+ " ждет пока очередь заполнится.");
+
 				resource.wait();
-				System.out
-						.println("Поток " + getName() + " возобновил работу.");
+
+				//Thread.sleep(10);
+
+				System.out.println("Поток " + getName() + " возобновил работу.");
 				number = resource.getELement();
 			}
-			System.out
-					.println("Поток " + getName() + " извлек число " + number);
+
+			System.out.println("Поток " + getName() + " извлек число " + number);
 		}
 	}
 
 	private void setIntegersIntoResource() throws InterruptedException {
-		Integer number = rand.nextInt(500);
+		Integer number = rand.nextInt(1000);
 		synchronized (resource) {
 			resource.setElement(number);
 			System.out.println("Поток " + getName() + " записал число "
 					+ number);
 			resource.notify();
+
+			//Thread.sleep(15);
 		}
 	}
 }

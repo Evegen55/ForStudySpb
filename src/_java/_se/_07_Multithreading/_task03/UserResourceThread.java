@@ -26,7 +26,7 @@ public class UserResourceThread {
 		t4.start();
 		t5.start();
 
-		Thread.sleep(100);
+		//Thread.sleep(100);
 
 		t1.stopThread();
 		t2.stopThread();
