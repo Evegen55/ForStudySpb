@@ -6,7 +6,7 @@
  * When thread read a file it creates an object  BankAccount with
  * name and balance and tried to storing it in ADT. If this object is
  * already present in the ADT, then thread get an amount of this object and
- * merge it with stored account using method mergeBalance(int amount).
+ * merge it with stored account using methods deposit and widthdraw.
  *
  */
 package _java._se._07_Multithreading._task01;
@@ -19,10 +19,11 @@ public class BankAccount {
 
 	private int balance;
 	private String name;
-
+	
 	/**
 	 * @param balance
 	 * @param name
+	 * @param id
 	 */
 	public BankAccount(int balance, String name) {
 		this.balance = balance;
@@ -47,7 +48,7 @@ public class BankAccount {
 	 *
 	 * @param amount
 	 */
-	public synchronized void mergeBalance(int amount){
+	public synchronized void deposit(int amount){
 		int x = balance + amount;
 		try {
 			Thread.sleep(15);
@@ -57,15 +58,15 @@ public class BankAccount {
 		}
 		balance = x;
 	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "BankAccount [balance=" + balance + ", name=" + name + ", "
-				+ "hashCode()=" + hashCode() + ", super.toString()="
-				+ super.toString() + "]";
+	public synchronized void withdraw(int amount) {
+		int x = balance + amount;
+		try {
+			Thread.sleep(20);
+		} catch (InterruptedException e) {
+			System.out.println("Exception in:");
+			e.printStackTrace();
+		}
+		balance = x;
 	}
 
 	/* (non-Javadoc)
@@ -82,6 +83,7 @@ public class BankAccount {
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
+	 * balance is subject to change
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -92,8 +94,8 @@ public class BankAccount {
 		if (getClass() != obj.getClass())
 			return false;
 		BankAccount other = (BankAccount) obj;
-		if (balance != other.balance)
-			return false;
+		//if (balance != other.balance)
+		//	return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -101,6 +103,16 @@ public class BankAccount {
 			return false;
 		return true;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "BankAccount [balance=" + balance + ", name=" + name + "]";
+	}
+
+	
 
 
 
