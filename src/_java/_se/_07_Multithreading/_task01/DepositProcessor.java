@@ -52,7 +52,7 @@ public class DepositProcessor extends Thread {
 	private void processorUnit(String name, int amount) {
 		BankAccount account = new BankAccount(amount, name);
 
-		synchronized (resource) {
+		//synchronized (resource) {
 			if (!resource.isAccountInResourse(account)) {
 				resource.addToResource(account);
 				//test code
@@ -72,6 +72,6 @@ public class DepositProcessor extends Thread {
 					resource.getAccount(account).deposit(amount);
 				}
 			}
-		}
+		//}
 	}
 }

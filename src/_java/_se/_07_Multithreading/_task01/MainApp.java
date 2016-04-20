@@ -30,8 +30,10 @@ public class MainApp {
 	
 	public void mainProcessor(){
 		File f = new File(this.fileName);
+		
 		DepositProcessor thread = new DepositProcessor();
 		ThreadGroup tg = new ThreadGroup("group");
+		
 		try(BufferedReader br = new BufferedReader(new FileReader(f));) {
 			/**
 			 * Each time that line is readed
@@ -45,14 +47,12 @@ public class MainApp {
 				
 				thread = new DepositProcessor(lines, resource);
 				thread.start();
-				//thread.join();
+				thread.join();
 				
 				//test code
 				//System.out.println(lines[3]);
 				//print(lines);
 			}
-			
-			thread.join();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -63,7 +63,7 @@ public class MainApp {
 		}
 		
 		//test code
-		//printResource(resource);
+		printResource(resource);
 		
 	}
 
