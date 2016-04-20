@@ -63,6 +63,7 @@ public class PropertiesReaderWith_Map_Multithreading implements Runnable {
 				String line = br.readLine();
 				if (isKeyInFile(line)) {
 					String[] lines = line.split("=");
+					System.out.println("*****" + "\t" + this.toString());
 					map.put(lines[0].trim(), lines[1].trim());
 				}
 			}
@@ -85,8 +86,8 @@ public class PropertiesReaderWith_Map_Multithreading implements Runnable {
 		for (Map.Entry<String,String> entry : parentMap.entrySet()) {
 			System.out.println( "key" + "\t" + entry.getKey() + 
 					"\t" + "value" + "\t" + entry.getValue() 
-					+ 
-					"\n" + "thread" + "\t" + this.toString()
+					//+ 
+					//"\n" + "thread" + "\t" + this.toString()
 					);
 		}
 	}
