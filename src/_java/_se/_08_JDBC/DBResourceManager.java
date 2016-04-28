@@ -29,5 +29,4 @@ public class DBResourceManager {
 		return bundle.getString(key);
 	}
 
-
 }
