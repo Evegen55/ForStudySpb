@@ -1,7 +1,7 @@
 /**
  *
  */
-package _java._se._08_JDBC;
+package _java._se._08_JDBC._connection_pool_example;
 
 import java.sql.Array;
 import java.sql.Blob;
