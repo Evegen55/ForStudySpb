@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<my:library xmlns:my="http://www.w3.org/TR/html4/">
+	<my:book id="1">
+		<my:category>children</my:category>
+		<my:genre>fantasy</my:genre>
+		<my:title>Harry Potter</my:title>
+		<my:author>J K. Rowling</my:author>
+		<my:year_of_publishing>2005</my:year_of_publishing>
+		<my:year_of_getting>2006</my:year_of_getting>
+		<my:ISBN></my:ISBN>
+		<my:price>29.99</my:price>
+	</my:book>
+</my:library>
