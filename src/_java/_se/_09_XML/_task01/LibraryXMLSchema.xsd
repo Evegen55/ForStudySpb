@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.example.org/LibraryXMLSchema"
+		elementFormDefault="qualified"
+		xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:my="http://www.example.org/LibraryXMLSchema">
+
+
+    <element name="library">
+    	<complexType>
+    		<sequence>
+    			<element name="Book">
+    				<complexType>
+    					<sequence>
+    						<element name="category" type="string"></element>
+    						<element name="genre" type="string"></element>
+    						<element name="title" type="string"></element>
+    						<element name="author" type="string"></element>
+    						<element name="year_of_publishing" type="int"></element>
+    						<element name="year_of_getting" type="int"></element>
+    						<element name="ISBN" type="string"></element>
+    						<element name="price" type="double"></element>
+    					</sequence>
+    				</complexType>
+    			</element>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>
