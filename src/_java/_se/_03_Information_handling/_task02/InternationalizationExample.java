@@ -28,7 +28,7 @@ public class InternationalizationExample {
 				//select locale and bundle file depends on user's preferrences
 				if (next == 1) {locale = Locale.US;	}
 				if (next == 2) {locale = Locale.getDefault(); }
-				bundle = ResourceBundle.getBundle("_java._se._03._task02.QuestionBundle", locale);
+				bundle = ResourceBundle.getBundle("_java._se._03_Information_handling._task02.QuestionBundle", locale);
 				System.out.println(bundle.getString("MAIN"));
 				
 				if(sc.hasNextInt()) {
