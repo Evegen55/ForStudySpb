@@ -20,6 +20,7 @@
     						<element name = "ISBN" type = "string"></element>
     						<element name = "price" type = "double"></element>
     					</sequence>
+    					<attribute name="lang" type="string" use="required"/>
     					<attribute name = "id" type = "int" use = "required"></attribute>
     				</complexType>
     			</element>
