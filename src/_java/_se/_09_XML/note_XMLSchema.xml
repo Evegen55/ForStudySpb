@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:note xmlns:p="http://www.w3schools.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3schools.com note_XMLSchema.xsd ">
+  <p:to>p:to</p:to>
+  <p:from>Me</p:from>
+  <p:heading>p:heading</p:heading>
+  <p:body>p:body</p:body>
+</p:note>
