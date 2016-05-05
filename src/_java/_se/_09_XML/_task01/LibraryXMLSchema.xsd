@@ -5,21 +5,22 @@
 		xmlns:my="http://www.example.org/LibraryXMLSchema">
 
 
-    <element name="library">
+    <element name = "library">
     	<complexType>
     		<sequence>
-    			<element name="Book">
+    			<element name = "Book">
     				<complexType>
     					<sequence>
-    						<element name="category" type="string"></element>
-    						<element name="genre" type="string"></element>
-    						<element name="title" type="string"></element>
-    						<element name="author" type="string"></element>
-    						<element name="year_of_publishing" type="int"></element>
-    						<element name="year_of_getting" type="int"></element>
-    						<element name="ISBN" type="string"></element>
-    						<element name="price" type="double"></element>
+    						<element name = "category" type = "string"></element>
+    						<element name = "genre" type = "string"></element>
+    						<element name = "title" type = "string"></element>
+    						<element name = "author" type = "string"></element>
+    						<element name = "year_of_publishing" type = "int"></element>
+    						<element name = "year_of_getting" type = "int"></element>
+    						<element name = "ISBN" type = "string"></element>
+    						<element name = "price" type = "double"></element>
     					</sequence>
+    					<attribute name = "id" type = "int" use = "required"></attribute>
     				</complexType>
     			</element>
     		</sequence>
