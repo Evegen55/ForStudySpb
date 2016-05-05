@@ -30,7 +30,7 @@ public class MunuReaderBy_SAX_STAX_DOM {
 	public void makeDOM(){
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	    String fileName = "src/_java/_se/_09_XML/PurchaseOrder.xml";
+	    String fileName = "src/_java/_se/_09_XML/_task02/menuWithId.xml";
 
 	    try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
@@ -44,8 +44,25 @@ public class MunuReaderBy_SAX_STAX_DOM {
 						if (childNode instanceof Element) {
 							System.out.println("childNode" + "\t" + childNode.getNodeName()
 							+ "\t" + childNode.getNodeType());
+							
+							
+							for (Node childTwoNode = childNode.getFirstChild();
+									childTwoNode != null;
+									childTwoNode = childTwoNode.getNextSibling()) {
+										if (childTwoNode instanceof Element) {
+											System.out.println("\t" + "--" + childTwoNode.getNodeName()
+											+ "\t" + childTwoNode.getNodeType()+ "\t" + childTwoNode.getTextContent());
+											
+											
+										}
+									}
+							
+							
+							
 						}
 					}
+			
+			
 	    } catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,6 +74,9 @@ public class MunuReaderBy_SAX_STAX_DOM {
 			e.printStackTrace();
 		}
 	}
-
+	public static void main(String[] args) {
+		MunuReaderBy_SAX_STAX_DOM or = new MunuReaderBy_SAX_STAX_DOM();
+		or.makeDOM();
+	}
 
 }
