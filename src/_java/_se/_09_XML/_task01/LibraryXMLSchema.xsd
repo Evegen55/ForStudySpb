@@ -14,11 +14,11 @@
     						<element name = "category" type = "string"></element>
     						<element name = "genre" type = "string"></element>
     						<element name = "title" type = "string"></element>
-    						<element name = "author" type = "string"></element>
-    						<element name = "year_of_publishing" type = "int"></element>
-    						<element name = "year_of_getting" type = "int"></element>
-    						<element name = "ISBN" type = "string"></element>
-    						<element name = "price" type = "double"></element>
+    						<element name = "author" type = "string" minOccurs="1"></element>
+    						<element name = "year_of_publishing" type = "int" maxOccurs="1"></element>
+    						<element name = "year_of_getting" type = "int" maxOccurs="1"</element>
+    						<element name = "ISBN" type = "string" minOccurs="1"></element>
+    						<element name = "price" type = "double" maxOccurs="1"></element>
     					</sequence>
     					<attribute name="lang" type="string" use="required"/>
     					<attribute name = "id" type = "int" use = "required"></attribute>
