@@ -23,7 +23,7 @@ public class MunuReaderBy_SAX_STAX_DOM {
 
 	public void makeSAX() {}
 
-	public void makeSTaX() {}
+	public void makeStAX() {}
 	/**
 	 *
 	 */
@@ -37,30 +37,26 @@ public class MunuReaderBy_SAX_STAX_DOM {
 			File f = new File(fileName);
 			Document doc = builder.parse(f);
 			Element root = doc.getDocumentElement();
-
+			System.out.println(root.getNodeName()+ ":");
+			//first loop
 			for (Node childNode = root.getFirstChild();
 					childNode != null;
 					childNode = childNode.getNextSibling()) {
 						if (childNode instanceof Element) {
-							System.out.println("childNode" + "\t" + childNode.getNodeName()
-							+ "\t" + childNode.getNodeType());
+							System.out.println("  " + childNode.getNodeName() + " " + childNode.getAttributes().getNamedItem("id"));
 							
-							
+							//second loop
 							for (Node childTwoNode = childNode.getFirstChild();
 									childTwoNode != null;
 									childTwoNode = childTwoNode.getNextSibling()) {
 										if (childTwoNode instanceof Element) {
 											System.out.println("\t" + "--" + childTwoNode.getNodeName()
-											+ "\t" + childTwoNode.getNodeType()+ "\t" + childTwoNode.getTextContent());
-											
-											
+											+ ":"
+											+ "\t" + childTwoNode.getTextContent().trim());
 										}
-									}
-							
-							
-							
+							}
 						}
-					}
+			}
 			
 			
 	    } catch (ParserConfigurationException e) {
