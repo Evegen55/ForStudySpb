@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<my:library xmlns:my="http://www.example.org/LibraryXMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/LibraryXMLSchema LibraryXMLSchema.xsd ">
+  <my:Book id="0" lang="">
+    <my:category>my:category</my:category>
+    <my:genre>my:genre</my:genre>
+    <my:title>my:title</my:title>
+    <my:author>my:author</my:author>
+    <my:year_of_publishing>0</my:year_of_publishing>
+    <my:year_of_getting>0</my:year_of_getting>
+    <my:ISBN>my:ISBN</my:ISBN>
+    <my:price>0.0</my:price>
+  </my:Book>
+</my:library>
