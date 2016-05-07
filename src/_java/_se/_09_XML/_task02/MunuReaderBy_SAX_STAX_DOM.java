@@ -109,8 +109,11 @@ public class MunuReaderBy_SAX_STAX_DOM {
 					if (id != null) {
 						System.out.print(id);
 					}
-					System.out.println();
+					//System.out.println();
 
+				}
+				if (event == XMLStreamConstants.CHARACTERS){
+					System.out.print(parser.getText()+ " ");
 				}
 			}
 		} catch (FileNotFoundException e) {
