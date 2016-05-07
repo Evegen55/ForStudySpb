@@ -64,8 +64,8 @@ public class MunuReaderBy_SAX_STAX_DOM {
 		                   }
 		                }
 					}
-				} 
-			}; 
+				}
+			};
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			factory.setNamespaceAware(true);
 			factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
@@ -90,8 +90,8 @@ public class MunuReaderBy_SAX_STAX_DOM {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	} 
-	
+	}
+
 
 	/**
 	 * analyze XML document using StAX-parser
@@ -112,7 +112,7 @@ public class MunuReaderBy_SAX_STAX_DOM {
 						System.out.print(id);
 					}
 					System.out.println();
-					
+
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -173,6 +173,7 @@ public class MunuReaderBy_SAX_STAX_DOM {
 	}
 
 	//just for my purpose
+	//TODO
 	public void validateXML_BySchema(){
 		File f = new File(fileNameLibrary);
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
