@@ -27,8 +27,6 @@ import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import jdk.internal.org.xml.sax.Attributes;
-
 /**
  * @author Lartsev
  *
