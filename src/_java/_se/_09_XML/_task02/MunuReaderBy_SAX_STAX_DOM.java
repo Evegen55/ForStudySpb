@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -21,6 +23,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXNotRecognizedException;
+import org.xml.sax.SAXNotSupportedException;
+import org.xml.sax.helpers.DefaultHandler;
+
+import jdk.internal.org.xml.sax.Attributes;
 
 /**
  * @author Lartsev
@@ -35,10 +42,62 @@ public class MunuReaderBy_SAX_STAX_DOM {
 			"src/_java/_se/_09_XML/_task01/LibraryByXMLSchema_with_occurs_idicator.xml";
 	private String fileNameLibrarySh =
 			"src/_java/_se/_09_XML/_task01/LibraryXMLSchema.xsd";
+	/**
+	 * analyze XML document using SAX-parser
+	 */
+	public void makeSAX() {
+		System.out.println("=====================================================================");
+		try(FileInputStream inFile= new FileInputStream(fileName);) {
+			DefaultHandler handler = new DefaultHandler() {
 
-	public void makeSAX() {}
+				/* (non-Javadoc)
+				 * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
+				 */
+				@Override
+				public void startElement(String uri, String localName, String qName, org.xml.sax.Attributes attributes) {
+					if (localName.equals("food") && attributes != null){
+						System.out.print(localName + " ");
+		                for (int i = 0; i < attributes.getLength(); i++){
+		                   String aname = attributes.getLocalName(i);
+		                   if (aname.equals("id")) {
+		                    	 System.out.println(attributes.getValue(i));
+		                   }
+		                }
+					}
+				} 
+			}; 
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			factory.setNamespaceAware(true);
+			factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+			SAXParser saxParser = factory.newSAXParser();
+			saxParser.parse(inFile, handler);
+	    } catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXNotRecognizedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} 
+	
 
+	/**
+	 * analyze XML document using StAX-parser
+	 */
 	public void makeStAX() {
+		System.out.println("=====================================================================");
 		try(FileInputStream inFile= new FileInputStream(fileName);
 				InputStreamReader isr = new InputStreamReader(inFile, "UTF-8");) {
 			XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -47,7 +106,7 @@ public class MunuReaderBy_SAX_STAX_DOM {
 				int event = parser.next();
 				if (event == XMLStreamConstants.START_ELEMENT){
 					String id = parser.getAttributeValue(parser.getNamespaceURI(), "id");
-					
+					//String text = parser.getElementText();
 					System.out.print(parser.getLocalName()+ " ");
 					if (id != null) {
 						System.out.print(id);
@@ -68,10 +127,10 @@ public class MunuReaderBy_SAX_STAX_DOM {
 		}
 	}
 	/**
-	 *
+	 * analyze XML document using DOM-parser
 	 */
 	public void makeDOM(){
-
+		System.out.println("=====================================================================");
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
 	    try {
@@ -147,8 +206,9 @@ public class MunuReaderBy_SAX_STAX_DOM {
 	 */
 	public static void main(String[] args) {
 		MunuReaderBy_SAX_STAX_DOM or = new MunuReaderBy_SAX_STAX_DOM();
-		//or.makeDOM();
+		or.makeDOM();
 		or.makeStAX();
+		or.makeSAX();
 	}
 
 }
