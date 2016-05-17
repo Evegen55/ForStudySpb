@@ -5,6 +5,7 @@ package _java._8_0._DataAndTimeAPI;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.temporal.TemporalAdjusters;
 
 /**
@@ -20,6 +21,9 @@ public class LocalDateExamples {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * 
+	 */
 	public void doSmth() {
 		LocalDate ld = LocalDate.of(2015, 1, 31).plusMonths(1);
 		System.out.println(ld);
@@ -37,6 +41,15 @@ public class LocalDateExamples {
 		}
 		
 	}
+	
+	/**
+	 * 
+	 */
+	public void printAllTimeZones(){
+		for (String s: ZoneId.getAvailableZoneIds()) {
+			System.out.println(s);
+		}
+	}
 
 	/**
 	 * @param args
@@ -44,6 +57,7 @@ public class LocalDateExamples {
 	public static void main(String[] args) {
 		LocalDateExamples lde = new LocalDateExamples();
 		lde.doSmth();
+		lde.printAllTimeZones();
 
 	}
 
