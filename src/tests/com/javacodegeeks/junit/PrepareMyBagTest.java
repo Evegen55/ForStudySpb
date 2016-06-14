@@ -1,4 +1,4 @@
-package tests;
+package tests.com.javacodegeeks.junit;
 
 import static org.junit.Assert.*;
 
