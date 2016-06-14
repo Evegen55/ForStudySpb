@@ -1,3 +1,9 @@
+/**
+ * In this section we will see how to create parameterized tests. 
+ * For this purpose, we will use the class mentioned in section 2.1 (Calculate)
+ * which provides a public method for adding integers. 
+ * So, this will be the class to be tested.
+ */
 package tests.com.javacodegeeks.junit.parameterized;
 
 import static org.junit.Assert.assertEquals;
