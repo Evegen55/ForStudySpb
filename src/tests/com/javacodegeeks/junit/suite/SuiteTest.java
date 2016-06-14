@@ -1,4 +1,4 @@
-package tests.com.javacodegeeks.junit;
+package tests.com.javacodegeeks.junit.suite;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
