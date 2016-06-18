@@ -12,6 +12,11 @@ public class BasicThreads {
 		#0(9), #0(8), #0(7), #0(6), #0(5), #0(4), #0(3), #0(2), #0(1), #0(Liftoff!),
 		*///:~
 		
+		//some modify this code
+	    for (int i = 0; i < 4; i++) {
+	    	Thread t1 = new Thread(new LiftOff());
+	        t1.start();
+	    }
 		
 	}
 } 
