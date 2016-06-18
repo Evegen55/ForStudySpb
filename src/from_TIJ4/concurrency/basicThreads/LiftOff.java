@@ -1,4 +1,4 @@
-package from_TIJ4.concurrency;
+package from_TIJ4.concurrency.basicThreads;
 //: concurrency/LiftOff.java
 // Demonstration of the Runnable interface.
 

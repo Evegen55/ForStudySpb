@@ -1,4 +1,4 @@
-package from_TIJ4.concurrency;
+package from_TIJ4.concurrency.basicThreads;
 //: concurrency/BasicThreads.java
 // The most basic use of the Thread class.
 
