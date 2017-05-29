@@ -4,8 +4,6 @@ public class AnnotationClass {
 
 	private int ex;
 	
-	
-	
 	/**
 	 * @param ex
 	 */
@@ -13,8 +11,6 @@ public class AnnotationClass {
 	public AnnotationClass(int ex) {
 		this.ex = ex;
 	}
-
-
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
