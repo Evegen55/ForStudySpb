@@ -11,7 +11,7 @@ public class LiftOff implements Runnable {
     this.countDown = countDown;
   }
   public String status() {
-    return "#" + id + "(" +
+    return "#" + Thread.currentThread().getName() + "\tid of given task" + "\t" + id + " (" +
       (countDown > 0 ? countDown : "Liftoff!") + "), ";
   }
   public void run() {
